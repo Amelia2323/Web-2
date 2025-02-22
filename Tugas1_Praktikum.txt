@@ -1,0 +1,29 @@
+Nama: Rizki Tri Amelia
+NIM : 0110124109
+
+
+1. Jelaskan apa yang dimaksud dengan dokumen root?
+Jawab: Direktori atau folder dimana file website disimpan
+
+2. Pada apache web server, apakah dokumen root harus terletak dalam direktori C:\xampp\htdocs ? Jelaskan jawaban anda
+Jawab: Harus terletak didalam direktori tersebut agar sebuah website yang sudah dibuat bisa diakses di browser, menjadi lebih mudah dalam mengorganisir project, dan semua file php diletakkan di direktori C:\xampp\htdocs.
+
+3. Jelaskan apa yang dimaksud dengan perintah git : init, clone, remote, add, commit, push
+dan checkout
+Jawab: - git init untuk membuat repository git 
+baru- git clone untuk membuat salinan repository lokal
+- git remote repositori umum yang digunakan semua anggota tim untuk bertukar perubahan mereka 
+- git add untuk untuk perintah menambahkan file baru ke repository yang baru dipilih
+- git commit untuk untuk menyimpan apabila terjadi perubahan dan dilakukan pada repository jarak jauh, namun tidak bisa melakukan perubahan. 
+- git push untuk mengunggah file dari local repository ke remote repository
+- git checkout untuk melakukan switch branch yang sedang aktif. Selain itu, menggunakan perintah ini, kita juga bisa memulihkan file
+
+4. Jelaskan perbedaan antara GitHub dan GitLab
+Jawab: GitHub: GitHub dikenal karena antarmuka pengguna yang sederhana dan mudah digunakan, menjadikannya pilihan yang populer bagi pengembang individu dan tim kecil. 
+Gitlab: GitLab memiliki antarmuka yang lebih kompleks dengan banyak fitur tambahan, yang mungkin memerlukan waktu untuk dipelajari, terutama bagi pengguna baru.
+
+5. Apa bedanya variable user dengan variable system ?
+Jawab: Variable user adalah khusus untuk user yang sedang digunakan sedangkan variable system adalah variable yang berlaku untuk seluruh user atau bisa diakses oleh semua user.
+
+6. Apa persamaan variable system dengan variable constant ?
+Jawab: untuk menyimpan data dan nilai dalam program.
