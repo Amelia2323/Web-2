@@ -71,9 +71,9 @@ $url = "http://localhost/project-uts/admin";
                     </div>
                 </div>
             </div>
-            <!-- Card 2 -->
+            <!-- Card 2 -->     
             <div class="col-xl-3 col-md-6">
-                <div class="card bg-danger text-white mb-4">
+                <div class="card bg-success text-white mb-4">
                     <div class="card-body">Prodi</div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
                         <a class="small text-white stretched-link" href="prodi/index.php">View Details</a>
@@ -83,7 +83,7 @@ $url = "http://localhost/project-uts/admin";
             </div>
             <!-- Card 3 -->
             <div class="col-xl-3 col-md-6">
-                <div class="card bg-danger text-white mb-4">
+                <div class="card bg-primary text-white mb-4">
                     <div class="card-body">Kegiatan</div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
                         <a class="small text-white stretched-link" href="kegiatan/index.php">View Details</a>
@@ -93,7 +93,7 @@ $url = "http://localhost/project-uts/admin";
             </div>
             <!-- Card 4 -->
             <div class="col-xl-3 col-md-6">
-                <div class="card bg-danger text-white mb-4">
+                <div class="card bg-secondary text-white mb-4">
                     <div class="card-body">Jenis Kegiatan</div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
                         <a class="small text-white stretched-link" href="jenis_kegiatan/index.php">View Details</a>
@@ -106,7 +106,7 @@ $url = "http://localhost/project-uts/admin";
         <div class="row">
             <!-- Card 5 -->
             <div class="col-xl-3 col-md-6">
-                <div class="card bg-danger text-white mb-4">
+                <div class="card bg-secondary text-white mb-4">
                     <div class="card-body">Dosen Kegiatan</div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
                         <a class="small text-white stretched-link" href="dosen_kegiatan/index.php">View Details</a>
@@ -116,7 +116,7 @@ $url = "http://localhost/project-uts/admin";
             </div>
             <!-- Card 6 -->
             <div class="col-xl-3 col-md-6">
-                <div class="card bg-danger text-white mb-4">
+                <div class="card bg-primary text-white mb-4">
                     <div class="card-body">Penelitian</div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
                         <a class="small text-white stretched-link" href="penelitian/index.php">View Details</a>
@@ -126,7 +126,7 @@ $url = "http://localhost/project-uts/admin";
             </div>
             <!-- Card 7 -->
             <div class="col-xl-3 col-md-6">
-                <div class="card bg-danger text-white mb-4">
+                <div class="card bg-success text-white mb-4">
                     <div class="card-body">Tim Penelitian</div>
                     <div class="card-footer d-flex align-items-center justify-content-between">
                         <a class="small text-white stretched-link" href="tim_penelitian/index.php">View Details</a>

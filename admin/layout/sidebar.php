@@ -21,11 +21,10 @@ $current_page = basename($_SERVER['REQUEST_URI']);
                 Prodi
             </a> 
 
-            <a class="nav-link <?= strpos($_SERVER['REQUEST_URI'], '/dosen') !== false ? 'active' : '' ?>" href="<?= $url ?>/dosen">
-                <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
-                Dosen
-            </a>
-
+            <a class="nav-link <?= strpos($_SERVER['REQUEST_URI'], '/dosen/') !== false && strpos($_SERVER['REQUEST_URI'], '/dosen_kegiatan') === false ? 'active' : '' ?>" href="<?= $url ?>/dosen">
+    <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
+    Dosen
+</a>
             <a class="nav-link <?= strpos($_SERVER['REQUEST_URI'], '/jenis_kegiatan') !== false ? 'active' : '' ?>" href="<?= $url ?>/jenis_kegiatan">
                 <div class="sb-nav-link-icon"><i class="fas fa-layer-group"></i></div>
                 Jenis Kegiatan
