@@ -11,7 +11,7 @@ if (isset($_GET['id'])) {
     } catch (PDOException $e) {
         // Jika error karena foreign key
         if ($e->getCode() == 23000) {
-            echo "<script>alert('Gagal menghapus! Data masih digunakan di tabel lain (misalnya Penelitian).'); window.location='index.php';</script>";
+            echo "<script>alert('Gagal menghapus! Data masih digunakan di tabel Penelitian.'); window.location='index.php';</script>";
         } else {
             // Error lainnya
             echo "<script>alert('Terjadi kesalahan: " . $e->getMessage() . "'); window.location='index.php';</script>";

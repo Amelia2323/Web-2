@@ -24,15 +24,15 @@
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
-                    <h1 class="mt-4">Data Dosen</h1>
+                    <h1 class="mt-4">Penelitian</h1>
                     <ol class="breadcrumb mb-4">
                         <li class="breadcrumb-item"><a href="index.php"></a>Dashboard</li>
-                        <li class="breadcrumb-item active">Dosen</li>
+                        <li class="breadcrumb-item active">Penlitian</li>
                     </ol>
 
-                    <h1 class="mt-4">Tambah Dosen</h1>
+                    <h1 class="mt-4">Tambah Penelitian</h1>
                     <div class="card mb-4">
-                        <div class="card-header"><i class="fas fa-table me-1"></i>Data Dosen</div>
+                        <div class="card-header"><i class="fas fa-table me-1"></i>Form Tambah Penelitian</div>
                         <div class="container-fluid px-4">
                             <?php
                             include '../config/koneksi.php';

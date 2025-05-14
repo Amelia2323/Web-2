@@ -10,7 +10,7 @@ if (isset($_GET['id'])) {
         echo "<script>alert('Data dosen berhasil dihapus.'); window.location='index.php';</script>";
     } catch (PDOException $e) {
         if ($e->getCode() == 23000) {
-            echo "<script>alert('Gagal menghapus, Dosen masih digunakan di tabel Tim Penelitian.'); window.location='index.php';</script>";
+            echo "<script>alert('Gagal menghapus, Dosen masih digunakan di tabel Dosen Kegiatan.'); window.location='index.php';</script>";
         } else {
             echo "<script>alert('Terjadi kesalahan: " . $e->getMessage() . "'); window.location='index.php';</script>";
         }

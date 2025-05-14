@@ -1,3 +1,37 @@
+<?php
+                                include '../config/koneksi.php';
+
+                                $id = $_GET['id'];
+                                $stmt = $dbh->prepare("SELECT * FROM dosen WHERE id = ?");
+                                $stmt->execute([$id]);
+                                $dosen = $stmt->fetch();
+
+                                $stmtProdi = $dbh->query("SELECT * FROM prodi");
+                                $prodiList = $stmtProdi->fetchAll();
+
+                                if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                                    $sql = "UPDATE dosen SET nidn=?, nama=?, gelar_depan=?, gelar_belakang=?, jenis_kelamin=?, tempat_lahir=?, tanggal_lahir=?, alamat=?, email=?, tahun_masuk=?, prodi_id=?
+                                      WHERE id=?";
+                                    $stmt = $dbh->prepare($sql);
+                                    $stmt->execute([
+                                        $_POST['nidn'],
+                                        $_POST['nama'],
+                                        $_POST['gelar_depan'],
+                                        $_POST['gelar_belakang'],
+                                        $_POST['jenis_kelamin'],
+                                        $_POST['tempat_lahir'],
+                                        $_POST['tanggal_lahir'],
+                                        $_POST['alamat'],
+                                        $_POST['email'],
+                                        $_POST['tahun_masuk'],
+                                        $_POST['prodi_id'],
+                                        $id
+                                    ]);
+                                    header("Location: index.php");
+                                    exit;
+                                }
+                                ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -63,39 +97,7 @@
                         <div class="card-header"><i class="fas fa-table me-1"></i>Form Data Dosen</div>
                         <div class="card-body">
                             <div class="container-fluid px-4">
-                                <?php
-                                include '../config/koneksi.php';
-
-                                $id = $_GET['id'];
-                                $stmt = $dbh->prepare("SELECT * FROM dosen WHERE id = ?");
-                                $stmt->execute([$id]);
-                                $dosen = $stmt->fetch();
-
-                                $stmtProdi = $dbh->query("SELECT * FROM prodi");
-                                $prodiList = $stmtProdi->fetchAll();
-
-                                if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                                    $sql = "UPDATE dosen SET nidn=?, nama=?, gelar_depan=?, gelar_belakang=?, jenis_kelamin=?, tempat_lahir=?, tanggal_lahir=?, alamat=?, email=?, tahun_masuk=?, prodi_id=?
-                                      WHERE id=?";
-                                    $stmt = $dbh->prepare($sql);
-                                    $stmt->execute([
-                                        $_POST['nidn'],
-                                        $_POST['nama'],
-                                        $_POST['gelar_depan'],
-                                        $_POST['gelar_belakang'],
-                                        $_POST['jenis_kelamin'],
-                                        $_POST['tempat_lahir'],
-                                        $_POST['tanggal_lahir'],
-                                        $_POST['alamat'],
-                                        $_POST['email'],
-                                        $_POST['tahun_masuk'],
-                                        $_POST['prodi_id'],
-                                        $id
-                                    ]);
-                                    header("Location: index.php");
-                                    exit;
-                                }
-                                ?>
+                                
                                 <form method="post">
                                     <div class="mb-3">
                                         <label>NIDN</label>

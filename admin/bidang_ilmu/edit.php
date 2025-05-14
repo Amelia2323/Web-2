@@ -1,3 +1,21 @@
+  <?php
+                                include '../config/koneksi.php';
+                                $id = $_GET['id'];
+                                $stmt = $dbh->prepare("SELECT * FROM bidang_ilmu WHERE id = ?");
+                                $stmt->execute([$id]);
+                                $data = $stmt->fetch();
+
+                                if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                                    $nama = $_POST['nama'];
+                                    $deskripsi = $_POST['deskripsi'];
+
+                                    $stmt = $dbh->prepare("UPDATE bidang_ilmu SET nama=?, deskripsi=? WHERE id=?");
+                                    $stmt->execute([$nama, $deskripsi, $id]);
+
+                                    header("Location: index.php");
+                                }
+                                ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -63,23 +81,7 @@
                         <div class="card-header"><i class="fas fa-table me-1"></i>Bidang Ilmu</div>
                         <div class="card-body">
                             <div class="container-fluid px-4">
-                                <?php
-                                include '../config/koneksi.php';
-                                $id = $_GET['id'];
-                                $stmt = $dbh->prepare("SELECT * FROM bidang_ilmu WHERE id = ?");
-                                $stmt->execute([$id]);
-                                $data = $stmt->fetch();
-
-                                if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                                    $nama = $_POST['nama'];
-                                    $deskripsi = $_POST['deskripsi'];
-
-                                    $stmt = $dbh->prepare("UPDATE bidang_ilmu SET nama=?, deskripsi=? WHERE id=?");
-                                    $stmt->execute([$nama, $deskripsi, $id]);
-
-                                    header("Location: index.php");
-                                }
-                                ?>
+                              
                                 <form method="POST">
                                     <div class="mb-3">
                                         <label class="form-label">Nama</label>
