@@ -1,3 +1,15 @@
+  <?php
+                            include '../config/koneksi.php';
+                            $id = $_GET['id'];
+                            $data = $dbh->query("SELECT * FROM jenis_kegiatan WHERE id = $id")->fetch();
+
+                            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                                $stmt = $dbh->prepare("UPDATE jenis_kegiatan SET nama = ? WHERE id = ?");
+                                $stmt->execute([$_POST['nama'], $id]);
+                                header("Location: index.php");
+                            }
+                            ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,33 +33,25 @@
 <body class="sb-nav-fixed">
 <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <!-- Navbar Brand--> 
-        <a class="navbar-brand ps-3" href="admin/index.php">Jenis Kegiatan</a>
+        <a class="navbar-brand ps-3" href="../index.php">Jenis Kegiatan</a>
         <!-- Sidebar Toggle-->
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
         <!-- Navbar Search-->
         <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
         </form>
-        <!-- Navbar-->
-        <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
-            <li class="nav-item dropdown">
-<a class="nav-link dropdown-toggle d-flex align-items-center gap-2 text-white" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-    <i class="fas fa-user fa-fw"></i>
-    <span class="d-none d-sm-inline">Rizki Tri Amelia</span>
-</a>                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="#!">Settings</a></li>
-                    <li><a class="dropdown-item" href="#!">Activity Log</a></li>
-                    <li>
-                        <hr class="dropdown-divider" />
-                    </li>
-                    <li><a class="dropdown-item" href="#!">Logout</a></li>
-                </ul>
-            </li>
-        </ul>
-    </nav>
-    <div id="layoutSidenav">
+        <!-- navbar -->
+        <?php include_once('../layout/navbar.php') ?>
+           <?php 
+            $url = "/project-uts/admin"; 
+            $current_page = basename($_SERVER['REQUEST_URI']);
+            ?>
+        <!-- batas navbar -->
+        <!-- sidebar -->
+        <div id="layoutSidenav">
         <div id="layoutSidenav_nav">
-        <?php include_once('../layout/sidebar.php') ?>
+            <?php include_once('../layout/sidebar.php') ?>
         </div>
+        <!-- batas sidebar -->
 
         <div id="layoutSidenav_content">
             <main>
@@ -57,22 +61,12 @@
                         <li class="breadcrumb-item"><a href="index.php"></a>Dashboard</li>
                         <li class="breadcrumb-item active">Jenis Kegiatan</li>
                     </ol>
+                    
                     <h2>Edit Jenis Kegiatan</h2>
-
                     <div class="card mb-4">
                         <div class="card-header"><i class="fas fa-table me-1"></i>Edit jenis kegiatan</div>
                         <div class="container">
-                            <?php
-                            include '../config/koneksi.php';
-                            $id = $_GET['id'];
-                            $data = $dbh->query("SELECT * FROM jenis_kegiatan WHERE id = $id")->fetch();
-
-                            if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                                $stmt = $dbh->prepare("UPDATE jenis_kegiatan SET nama = ? WHERE id = ?");
-                                $stmt->execute([$_POST['nama'], $id]);
-                                header("Location: index.php");
-                            }
-                            ?>
+                          
                             <div class="container mt-4">
                                 <form method="POST">
                                     <div class="mb-3">
@@ -82,7 +76,15 @@
                                     <button type="submit" class="btn btn-primary">Update</button>
                                     <a href="index.php" class="btn btn-secondary">Kembali</a>
                                 </form>
-                            </div>
+                            
+                 </main>
+             <!-- footer -->
+            <?php include_once('../layout/footer.php') ?>
+                    <?php 
+            $url = "/project-uts/admin"; 
+            $current_page = basename($_SERVER['REQUEST_URI']);
+            ?>
+            <!-- batas footer -->
 </body>
 
 </html>

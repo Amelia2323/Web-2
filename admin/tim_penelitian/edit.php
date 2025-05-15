@@ -1,3 +1,20 @@
+<?php
+                                include '../config/koneksi.php';
+                                $dosen_id = $_GET['dosen_id'];
+                                $penelitian_id = $_GET['penelitian_id'];
+
+                                $data = $dbh->prepare("SELECT * FROM tim_penelitian WHERE dosen_id=? AND penelitian_id=?");
+                                $data->execute([$dosen_id, $penelitian_id]);
+                                $row = $data->fetch();
+
+                                if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                                    $peran = $_POST['peran'];
+                                    $stmt = $dbh->prepare("UPDATE tim_penelitian SET peran=? WHERE dosen_id=? AND penelitian_id=?");
+                                    $stmt->execute([$peran, $dosen_id, $penelitian_id]);
+                                    header("Location: index.php");
+                                }
+                                ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,33 +38,25 @@
 <body class="sb-nav-fixed">
 <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <!-- Navbar Brand--> 
-        <a class="navbar-brand ps-3" href="admin/index.php">Tim Penelitian</a>
+        <a class="navbar-brand ps-3" href="../index.php">Tim Penelitian</a>
         <!-- Sidebar Toggle-->
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
         <!-- Navbar Search-->
         <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
         </form>
-        <!-- Navbar-->
-        <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
-            <li class="nav-item dropdown">
-<a class="nav-link dropdown-toggle d-flex align-items-center gap-2 text-white" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-    <i class="fas fa-user fa-fw"></i>
-    <span class="d-none d-sm-inline">Rizki Tri Amelia</span>
-</a>                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="#!">Settings</a></li>
-                    <li><a class="dropdown-item" href="#!">Activity Log</a></li>
-                    <li>
-                        <hr class="dropdown-divider" />
-                    </li>
-                    <li><a class="dropdown-item" href="#!">Logout</a></li>
-                </ul>
-            </li>
-        </ul>
-    </nav>
-    <div id="layoutSidenav">
+         <!-- navbar -->
+        <?php include_once('../layout/navbar.php') ?>
+           <?php 
+            $url = "/project-uts/admin"; 
+            $current_page = basename($_SERVER['REQUEST_URI']);
+            ?>
+        <!-- batas navbar -->
+        <!-- sidebar -->
+        <div id="layoutSidenav">
         <div id="layoutSidenav_nav">
-        <?php include_once('../layout/sidebar.php') ?>
+            <?php include_once('../layout/sidebar.php') ?>
         </div>
+        <!-- batas sidebar -->
 
         <div id="layoutSidenav_content">
             <main>
@@ -63,30 +72,40 @@
                         <div class="card-header"><i class="fas fa-table me-1"></i>Data Tim Penelitian</div>
                         <div class="card-body">
                             <div class="container-fluid px-4">
-                                <?php
-                                include '../config/koneksi.php';
-                                $dosen_id = $_GET['dosen_id'];
-                                $penelitian_id = $_GET['penelitian_id'];
-
-                                $data = $dbh->prepare("SELECT * FROM tim_penelitian WHERE dosen_id=? AND penelitian_id=?");
-                                $data->execute([$dosen_id, $penelitian_id]);
-                                $row = $data->fetch();
-
-                                if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                                    $peran = $_POST['peran'];
-                                    $stmt = $dbh->prepare("UPDATE tim_penelitian SET peran=? WHERE dosen_id=? AND penelitian_id=?");
-                                    $stmt->execute([$peran, $dosen_id, $penelitian_id]);
-                                    header("Location: index.php");
-                                }
-                                ?>
+                                
                                 <form method="post">
-                                    <div class="mb-3">
-                                        <label>Peran</label>
-                                        <input type="text" name="peran" class="form-control" value="<?= $row['peran'] ?>">
-                                    </div>
-                                    <button class="btn btn-primary" type="submit">Update</button>
-                                    <a href="index.php" class="btn btn-secondary">Kembali</a>
-                                </form>
+    <div class="mb-3">
+        <label>Dosen</label>
+        <select name="dosen_id" class="form-control" required>
+            <?php
+            $dosenList = $dbh->query("SELECT * FROM dosen");
+            while ($d = $dosenList->fetch()) {
+                $selected = ($d['id'] == $row['dosen_id']) ? 'selected' : '';
+                echo "<option value='{$d['id']}' $selected>{$d['nama']}</option>";
+            }
+            ?>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label>Penelitian</label>
+        <select name="penelitian_id" class="form-control" required>
+            <?php
+            $penelitianList = $dbh->query("SELECT * FROM penelitian");
+            while ($p = $penelitianList->fetch()) {
+                $selected = ($p['id'] == $row['penelitian_id']) ? 'selected' : '';
+                echo "<option value='{$p['id']}' $selected>{$p['judul']}</option>";
+            }
+            ?>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label>Peran</label>
+        <input type="text" name="peran" class="form-control" value="<?= $row['peran'] ?>" required>
+    </div>
+    <button class="btn btn-primary" type="submit">Update</button>
+    <a href="index.php" class="btn btn-secondary">Kembali</a>
+</form>
+ 
                             </div>
 
                         </div>
@@ -94,18 +113,13 @@
                 </div>
             </main>
 
-            <footer class="py-4 bg-light mt-auto">
-                <div class="container-fluid px-4">
-                    <div class="d-flex align-items-center justify-content-between small">
-                        <div class="text-muted">&copy; Your Website 2023</div>
-                        <div>
-                            <a href="#">Privacy Policy</a>
-                            &middot;
-                            <a href="#">Terms &amp; Conditions</a>
-                        </div>
-                    </div>
-                </div>
-            </footer>
+            <!-- footer -->
+            <?php include_once('../layout/footer.php') ?>
+                    <?php 
+            $url = "/project-uts/admin"; 
+            $current_page = basename($_SERVER['REQUEST_URI']);
+            ?>
+        <!-- batas footer -->
         </div>
     </div>
 

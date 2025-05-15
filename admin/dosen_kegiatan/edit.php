@@ -47,23 +47,34 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 </head>
 <body class="sb-nav-fixed">
-    <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-<a class="nav-link dropdown-toggle d-flex align-items-center gap-2 text-white" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-    <i class="fas fa-user fa-fw"></i>
-    <span class="d-none d-sm-inline">Rizki Tri Amelia</span>
-</a>        <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle"><i class="fas fa-bars"></i></button>
-    </nav>
-    <div id="layoutSidenav">
+<nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
+        <!-- Navbar Brand--> 
+        <a class="navbar-brand ps-3" href="../index.php">Dosen Kegiatan</a>
+        <!-- Sidebar Toggle-->
+        <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
+        <!-- Navbar Search-->
+        <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+        </form>   
+         <!-- navbar -->
+        <?php include_once('../layout/navbar.php') ?>
+           <?php 
+            $url = "/project-uts/admin"; 
+            $current_page = basename($_SERVER['REQUEST_URI']);
+            ?>
+        <!-- batas navbar -->
+        <!-- sidebar -->
+        <div id="layoutSidenav">
         <div id="layoutSidenav_nav">
             <?php include_once('../layout/sidebar.php') ?>
         </div>
+        <!-- batas sidebar -->
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
-                    <h1 class="mt-4">Dosen Kegiatan</h1>
+                    <h1 class="mt-4">Data Dosen Kegiatan</h1>
                     <ol class="breadcrumb mb-4">
-                        <li class="breadcrumb-item"><a href="index.php">Dashboard</a></li>
-                        <li class="breadcrumb-item active">Edit Dosen Kegiatan</li>
+                        <li class="breadcrumb-item"><a href="index.php"></a>Dashboard</li>
+                        <li class="breadcrumb-item active">Dosen Kegiatan</li>
                     </ol>
                     <h2 class="mt-4">Edit Dosen Kegiatan</h2>
 
@@ -109,17 +120,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </div>
                 </div>
             </main>
-            <footer class="py-4 bg-light mt-auto">
-                <div class="container-fluid px-4">
-                    <div class="d-flex align-items-center justify-content-between small">
-                        <div class="text-muted">&copy; Your Website 2023</div>
-                        <div>
-                            <a href="#">Privacy Policy</a> &middot;
-                            <a href="#">Terms &amp; Conditions</a>
-                        </div>
-                    </div>
-                </div>
-            </footer>
+            <!-- footer -->
+            <?php include_once('../layout/footer.php') ?>
+                    <?php 
+            $url = "/project-uts/admin"; 
+            $current_page = basename($_SERVER['REQUEST_URI']);
+            ?>
+        <!-- batas footer -->
         </div>
     </div>
     <script src="../js/scripts.js"></script>

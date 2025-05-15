@@ -37,50 +37,42 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
     <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 </head>
-
+ 
 <body class="sb-nav-fixed">
 <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
         <!-- Navbar Brand--> 
-        <a class="navbar-brand ps-3" href="admin/index.php">Kegiatan</a>
+        <a class="navbar-brand ps-3" href="../index.php">Kegiatan</a>
         <!-- Sidebar Toggle-->
         <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
         <!-- Navbar Search-->
         <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
         </form>
-        <!-- Navbar-->
-        <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
-            <li class="nav-item dropdown">
-<a class="nav-link dropdown-toggle d-flex align-items-center gap-2 text-white" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-    <i class="fas fa-user fa-fw"></i>
-    <span class="d-none d-sm-inline">Rizki Tri Amelia</span>
-</a>                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="#!">Settings</a></li>
-                    <li><a class="dropdown-item" href="#!">Activity Log</a></li>
-                    <li>
-                        <hr class="dropdown-divider" />
-                    </li>
-                    <li><a class="dropdown-item" href="#!">Logout</a></li>
-                </ul>
-            </li>
-        </ul>
-    </nav>
-    <div id="layoutSidenav">
+        <!-- navbar -->
+        <?php include_once('../layout/navbar.php') ?>
+           <?php 
+            $url = "/project-uts/admin";  
+            $current_page = basename($_SERVER['REQUEST_URI']);
+            ?>
+        <!-- batas navbar -->
+        <!-- sidebar -->
+        <div id="layoutSidenav">
         <div id="layoutSidenav_nav">
-        <?php include_once('../layout/sidebar.php') ?>
+            <?php include_once('../layout/sidebar.php') ?>
         </div>
+        <!-- batas sidebar -->
 
         <div id="layoutSidenav_content">
             <main>
                 <div class="container-fluid px-4">
-                    <h1 class="mt-4">Data Dosen</h1>
+                    <h1 class="mt-4">Data Kegiatan</h1>
                     <ol class="breadcrumb mb-4">
                         <li class="breadcrumb-item"><a href="index.php"></a>Dashboard</li>
-                        <li class="breadcrumb-item active">Dosen</li>
+                        <li class="breadcrumb-item active">Kegiatan</li>
                     </ol>
                     <h2>Edit Kegiatan</h2>
 
                     <div class="card mb-4">
-                        <div class="card-header"><i class="fas fa-table me-1"></i>Data Dosen</div>
+                        <div class="card-header"><i class="fas fa-table me-1"></i>Data Kegiatan</div>
                         <div class="card-body">
 <div class="container">
     <form method="POST">
@@ -115,6 +107,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <button type="submit" class="btn btn-primary">Update</button>
         <a href="index.php" class="btn btn-secondary">Kembali</a>
     </form>
-</div>
+   </div>
+    </div>
+    </div>
+       <!-- footer -->
+            <?php include_once('../layout/footer.php') ?>
+                    <?php 
+            $url = "/project-uts/admin"; 
+            $current_page = basename($_SERVER['REQUEST_URI']);
+            ?>
+        <!-- batas footer -->       
+    </div>
+    </div>
 </body>
 </html>
